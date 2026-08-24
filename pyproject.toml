@@ -1,0 +1,22 @@
+[project]
+name = "info4000"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Jalen Oglivie", email = "jmo30232@uga.edu" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "jupyterlab>=4.6.3",
+    "matplotlib>=3.11.1",
+    "pandas>=3.0.5",
+    "streamlit>=1.62.0",
+]
+
+[project.scripts]
+info4000 = "info4000:main"
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"
