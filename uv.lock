@@ -7,6 +7,41 @@ resolution-markers = [
     "sys_platform != 'emscripten' and sys_platform != 'win32'",
 ]
 
+[manifest]
+members = [
+    "1exercise",
+    "1stassignment",
+    "info4000",
+]
+
+[[package]]
+name = "1exercise"
+version = "0.1.0"
+source = { editable = "1exercise" }
+dependencies = [
+    { name = "numpy" },
+    { name = "pandas" },
+    { name = "streamlit" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "numpy", specifier = ">=2.5.2" },
+    { name = "pandas", specifier = ">=3.0.5" },
+    { name = "streamlit", specifier = ">=1.62.0" },
+]
+
+[[package]]
+name = "1stassignment"
+version = "0.1.0"
+source = { editable = "1stAssignment" }
+dependencies = [
+    { name = "streamlit" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "streamlit", specifier = ">=1.62.0" }]
+
 [[package]]
 name = "altair"
 version = "6.2.2"
