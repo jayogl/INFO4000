@@ -20,7 +20,7 @@ with col1:
 
 with col2:
     results_container = st.container()
-    with results_container: # [19]
+    with results_container:
         tab1, tab2 = st.tabs(["Summary", "Details"])
         if run_button:
             with tab1:

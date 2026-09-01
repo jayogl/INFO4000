@@ -1,29 +1,23 @@
 [project]
-name = "info4000"
+name = "2ndexercise"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 authors = [
-    { name = "Jalen Oglivie", email = "jmo30232@uga.edu" }
+    { name = "jayogl", email = "jayoglivie813@gmail.com" }
 ]
 requires-python = ">=3.14"
 dependencies = [
-    "jupyterlab>=4.6.3",
-    "matplotlib>=3.11.1",
+    "lxml>=6.1.2",
+    "numpy>=2.5.2",
     "pandas>=3.0.5",
+    "scikit-learn>=1.9.0",
     "streamlit>=1.62.0",
 ]
 
 [project.scripts]
-info4000 = "info4000:main"
+2ndexercise = "2ndexercise:main"
 
 [build-system]
 requires = ["uv_build>=0.12.5,<0.13.0"]
 build-backend = "uv_build"
-
-[tool.uv.workspace]
-members = [
-    "1stAssignment",
-    "1exercise",
-    "2ndexercise",
-]
