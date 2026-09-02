@@ -6,20 +6,31 @@ import re
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
+import requests
 
 # =====================================================================
-# TASK 1: Scrape Data from ESPN [7]
+# TASK 1: Scrape Data from ESPN with browser headers
 # =====================================================================
 url = "https://www.espn.com/nfl/standings"
-tables = pd.read_html(url)
 
-# ESPN's Table Layout:
+# Set a standard browser User-Agent to prevent ESPN from blocking the request
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
+}
+
+# Fetch the webpage HTML content safely using requests
+response = requests.get(url, headers=headers)
+
+# Parse the HTML tables from the response text
+tables = pd.read_html(response.text)
+
+# ESPN's Table Layout is now properly populated:
 # Table 0: AFC Team Names | Table 1: AFC Stats (W, L, PF, PA, etc.)
 # Table 2: NFC Team Names | Table 3: NFC Stats (W, L, PF, PA, etc.)
 afc_names = tables
-afc_stats = tables[9]
-nfc_names = tables[1]
-nfc_stats = tables[7]
+afc_stats = tables[3]
+nfc_names = tables[4]
+nfc_stats = tables[2]
 
 # =====================================================================
 # TASK 2: Combine & Clean Conference Data [7]
