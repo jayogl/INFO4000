@@ -18,7 +18,7 @@ train_transforms = transforms.Compose([
     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
 ])
 
-val_transforms = transforms.Compose([
+test_transforms = transforms.Compose([
     transforms.Resize((224, 224)),
     transforms.ToTensor(),
     transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
@@ -27,10 +27,10 @@ val_transforms = transforms.Compose([
 # 3. Load Datasets using ImageFolder
 data_dir = "./data/exotic"  # Replace with the actual path to your exotic dataset
 train_dataset = datasets.ImageFolder(root=os.path.join(data_dir, "train"), transform=train_transforms)
-val_dataset = datasets.ImageFolder(root=os.path.join(data_dir, "val"), transform=val_transforms)
+test_dataset = datasets.ImageFolder(root=os.path.join(data_dir, "val"), transform=test_transforms)
 
 train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
-val_loader = DataLoader(val_dataset, batch_size=32, shuffle=False)
+test_loader = DataLoader(test_dataset, batch_size=32, shuffle=False)
 
 class_names = train_dataset.classes
 num_classes = len(class_names)
@@ -58,8 +58,8 @@ criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(filter(lambda p: p.requires_grad, model.parameters()), lr=0.001)
 
 # 8. Training & Testing Loop function
-def train_model(model, train_loader, val_loader, criterion, optimizer, epochs=5):
-    results = {"train_loss": [], "train_acc": [], "val_loss": [], "val_acc": []}
+def train_model(model, train_loader, test_loader, criterion, optimizer, epochs=5):
+    results = {"train_loss": [], "train_acc": [], "test_loss": [], "test_acc": []}
     
     for epoch in range(epochs):
         model.train()
@@ -89,37 +89,37 @@ def train_model(model, train_loader, val_loader, criterion, optimizer, epochs=5)
         
         # Validation evaluation
         model.eval()
-        val_loss, val_correct = 0.0, 0
+        test_loss, test_correct = 0.0, 0
         total_val = 0
         
         with torch.no_grad():
-            for X, y in val_loader:
+            for X, y in test_loader:
                 X, y = X.to(device), y.to(device)
                 outputs = model(X)
                 loss = criterion(outputs, y)
                 
-                val_loss += loss.item() * X.size(0)
+                test_loss += loss.item() * X.size(0)
                 _, preds = torch.max(outputs, 1)
-                val_correct += torch.sum(preds == y.data).item()
+                test_correct += torch.sum(preds == y.data).item()
                 total_val += X.size(0)
                 
-        epoch_val_loss = val_loss / total_val
-        epoch_val_acc = val_correct / total_val
+        epoch_test_loss = test_loss / total_val
+        epoch_test_acc = test_correct / total_val
         
         results["train_loss"].append(epoch_train_loss)
         results["train_acc"].append(epoch_train_acc)
-        results["val_loss"].append(epoch_val_loss)
-        results["val_acc"].append(epoch_val_acc)
+        results["test_loss"].append(epoch_test_loss)
+        results["test_acc"].append(epoch_test_acc)
         
         print(f"Epoch {epoch+1}/{epochs} | "
               f"Train Loss: {epoch_train_loss:.4f} Acc: {epoch_train_acc:.4f} | "
-              f"Val Loss: {epoch_val_loss:.4f} Acc: {epoch_val_acc:.4f}")
+              f"Val Loss: {epoch_test_loss:.4f} Acc: {epoch_test_acc:.4f}")
               
     return results
 
 # 9. Train and Save Model Weights
 epochs = 5  # Modify based on training budget & datasets
-results = train_model(model, train_loader, val_loader, criterion, optimizer, epochs=epochs)
+results = train_model(model, train_loader, test_loader, criterion, optimizer, epochs=epochs)
 
 # Save only weights (state_dict) as recommended
 torch.save(model.state_dict(), "vgg16_feature_extraction.pth")

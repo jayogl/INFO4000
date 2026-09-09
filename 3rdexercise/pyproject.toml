@@ -7,7 +7,10 @@ authors = [
     { name = "jayogl", email = "jayoglivie813@gmail.com" }
 ]
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "torch>=2.14.0",
+    "torchvision>=0.29.0",
+]
 
 [project.scripts]
 3rdexercise = "3rdexercise:main"
@@ -15,3 +18,8 @@ dependencies = []
 [build-system]
 requires = ["uv_build>=0.12.5,<0.13.0"]
 build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.3.0",
+]
