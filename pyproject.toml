@@ -6,7 +6,7 @@ readme = "README.md"
 authors = [
     { name = "Jalen Oglivie", email = "jmo30232@uga.edu" }
 ]
-requires-python = ">=3.14"
+requires-python = ">=3"
 dependencies = [
     "accelerate>=1.14.0",
     "datasets>=5.0.1",
