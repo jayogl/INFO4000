@@ -33,6 +33,7 @@ members = [
     "2ndexercise",
     "3rdexercise",
     "1stHW",
+    "4thexercise",
 ]
 
 [dependency-groups]
