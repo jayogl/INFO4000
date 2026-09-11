@@ -16,6 +16,7 @@ dependencies = [
     "matplotlib>=3.11.1",
     "pandas>=3.0.5",
     "streamlit>=1.62.0",
+    "torch-directml>=0.2.5.dev240914",
     "transformers>=5.16.1",
 ]
 
