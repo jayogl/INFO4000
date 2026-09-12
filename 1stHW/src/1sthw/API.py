@@ -43,8 +43,8 @@ def predict():
         # Model Inference
         with torch.no_grad():
             outputs = model(input_tensor)
-            probabilities = torch.softmax(outputs, dim=1)
-            confidence, predicted_idx = torch.max(probabilities, 1)
+            probabilities = torch.softmax(outputs[0], dim=0)
+            confidence, predicted_idx = torch.max(probabilities, dim=0)
 
         result = {
             'prediction': class_names[predicted_idx.item()],

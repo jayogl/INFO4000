@@ -69,7 +69,7 @@ with col2:
         st.info("👈 Please upload a CT scan image on the left to activate predictions.")
 
 # Instructions Expander
-with st.expander("📖 Submission & System Details"):
+with st.expander("📖 System Details"):
     st.write("""
     * **Backend:** Flask REST API hosting PyTorch ResNet18 model weights.
     * **Frontend:** Interactive Streamlit Dashboard communicating via HTTP POST multipart requests.
