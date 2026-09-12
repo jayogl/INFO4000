@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 from PIL import Image
 
-# Set Wide Page Configuration
+# Page Configuration
 st.set_page_config(
     page_title="Covid-19 CT Scan Diagnostic Service",
     page_icon="🏥",
@@ -73,5 +73,5 @@ with st.expander("📖 Submission & System Details"):
     st.write("""
     * **Backend:** Flask REST API hosting PyTorch ResNet18 model weights.
     * **Frontend:** Interactive Streamlit Dashboard communicating via HTTP POST multipart requests.
-    * **Preprocessing:** Auto-converting mixed-channel images to 3-channel RGB, resizing to 224x224, and applying ImageNet tensor normalization.
+    * **Preprocessing:** Resizing to 224x224 and applying ImageNet tensor normalization.
     """)

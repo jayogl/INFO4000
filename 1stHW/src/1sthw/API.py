@@ -1,30 +1,29 @@
 import io
 import torch
 import torch.nn as nn
+import torch_directml
 from torchvision import models, transforms
 from PIL import Image
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-# 1. Device and Class Configuration
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+# Configuration
+device = torch_directml.device()
 class_names = ['covid', 'normal']
 
-# 2. Re-initialize Model Architecture and Load Weights
+# Load Weights
 weights = models.ResNet18_Weights.DEFAULT
 model = models.resnet18(weights=weights)
 num_ftrs = model.fc.in_features
 model.fc = nn.Linear(num_ftrs, len(class_names))
-
 model.load_state_dict(torch.load('covid_model.pth', map_location=device))
 model.to(device)
 model.eval()
 
-# 3. Inference Preprocessing Pipeline
+# Inference Preprocessing Pipeline
 inference_transform = transforms.Compose([
     transforms.Resize((224, 224)),
-    transforms.Lambda(lambda img: img.convert('RGB')),
     transforms.ToTensor(),
     transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
 ])
@@ -36,12 +35,12 @@ def predict():
 
     file = request.files['file']
     try:
-        # Read image bytes and preprocess
+        # Read Image
         img_bytes = file.read()
         image = Image.open(io.BytesIO(img_bytes))
         input_tensor = inference_transform(image).unsqueeze(0).to(device)
 
-        # Execute Model Inference
+        # Model Inference
         with torch.no_grad():
             outputs = model(input_tensor)
             probabilities = torch.softmax(outputs, dim=1)
