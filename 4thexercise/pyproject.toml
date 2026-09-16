@@ -7,11 +7,7 @@ authors = [
     { name = "jayogl", email = "jayoglivie813@gmail.com" }
 ]
 requires-python = ">=3.12"
-dependencies = [
-    "scikit-learn>=1.9.1",
-    "torch>2.5",
-    "torchvision>=0.29.0",
-]
+dependencies = []
 
 [project.scripts]
 4thexercise = "4thexercise:main"
