@@ -15,6 +15,7 @@ dependencies = [
     "jupyterlab>=4.6.4",
     "matplotlib>=3.11.2",
     "ollama>=0.6.3",
+    "paho-mqtt>=2.1.0",
     "pandas>=3.0.6",
     "pypdf>=6.19.0",
     "scikit-learn>=1.9.1",

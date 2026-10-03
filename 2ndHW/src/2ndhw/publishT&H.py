@@ -6,10 +6,10 @@ import paho.mqtt.client as mqtt
 # Configuration
 BROKER = "test.mosquitto.org"
 PORT = 1883
-TOPIC = "weather/temp_humidity"
+TOPIC = "jayog_info4000/weather/temp_humidity"
 
 # Initialize MQTT Client
-client = mqtt.Client()
+client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION1, client_id="T&H_publisher_client")
 client.connect(BROKER, PORT)
 print(f"Connected to MQTT broker: {BROKER}")
 
