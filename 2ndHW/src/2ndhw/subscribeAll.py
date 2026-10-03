@@ -7,8 +7,8 @@ PORT = 1883
 
 # Explicit list of topics to subscribe to
 TOPICS = [
-    ("jayog_info4000/weather/temp_humidity", 0),
-    ("jayog_info4000/weather/rainfall", 0)
+    "jayog_info4000/weather/temp_humidity",
+    "jayog_info4000/weather/rainfall"
 ]
 
 # Global counter for tracking received data points
@@ -20,7 +20,7 @@ def on_connect(client, userdata, flags, rc):
         print(f"Connected! Result code: {rc}", flush=True)
         for topic in TOPICS:
             client.subscribe(topic)
-            print(f"  -> Subscribed to: {topic}")
+            print(f"Subscribed to: {topic}")
     else:
         print(f"Failed to connect, return code {rc}")
 

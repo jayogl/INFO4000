@@ -10,7 +10,7 @@ def on_connect(client, userdata, flags, rc):
   if rc == 0:
     print(f"Connected! Result code: {rc}", flush=True)
     client.subscribe(TOPIC)
-    print(f"  -> Subscribed to: {TOPIC}")
+    print(f"Subscribed to: {TOPIC}")
   else:
     print(f"Failed to connect, return code {rc}")
 
@@ -26,5 +26,4 @@ client.on_message = on_message
 
 # Connect and start blocking loop
 client.connect(BROKER, PORT)
-print("Starting continuous loop_forever()... Press Ctrl+C to stop.")
 client.loop_forever()  # Blocks main thread and listens continuously
