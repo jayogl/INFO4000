@@ -12,10 +12,17 @@ resolution-markers = [
 
 [manifest]
 members = [
+    "1stmp",
     "2ndhw",
     "7thexercise",
+    "9thexercise",
     "info4000",
 ]
+
+[[package]]
+name = "1stmp"
+version = "0.1.0"
+source = { editable = "1stMP" }
 
 [[package]]
 name = "2ndhw"
@@ -26,6 +33,11 @@ source = { editable = "2ndHW" }
 name = "7thexercise"
 version = "0.1.0"
 source = { editable = "7thexercise" }
+
+[[package]]
+name = "9thexercise"
+version = "0.1.0"
+source = { editable = "9thexercise" }
 
 [[package]]
 name = "aiohappyeyeballs"
