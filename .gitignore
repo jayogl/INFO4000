@@ -17,3 +17,7 @@ wheels/
 *.ogg
 *.m4a
 *.aac
+*.joblib
+*.pt
+*.bin
+*.safetensors
