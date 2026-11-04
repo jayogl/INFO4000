@@ -1,0 +1,38 @@
+{
+  "U7": {
+    "description": "STM32 microcontroller",
+    "safety_critical": false,
+    "owner_team": "SMT Process",
+    "supplier": "Alpha Semi"
+  },
+  "Q3": {
+    "description": "Motor-drive MOSFET gate driver",
+    "safety_critical": true,
+    "owner_team": "Power Electronics",
+    "supplier": "Beta Power"
+  },
+  "C12": {
+    "description": "100 nF decoupling capacitor",
+    "safety_critical": false,
+    "owner_team": "SMT Process",
+    "supplier": "Gamma Passives"
+  },
+  "H1": {
+    "description": "Enclosure housing",
+    "safety_critical": false,
+    "owner_team": "Assembly",
+    "supplier": "Delta Plastics"
+  },
+  "J2": {
+    "description": "Field wiring connector",
+    "safety_critical": false,
+    "owner_team": "Assembly",
+    "supplier": "Epsilon Conn"
+  },
+  "D5": {
+    "description": "Flyback diode, brake circuit",
+    "safety_critical": true,
+    "owner_team": "Power Electronics",
+    "supplier": "Beta Power"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "control-lab": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "C:/Users/YOURNAME/path/to/control_mcp_demo",
+        "python",
+        "server.py"
+      ]
+    }
+  }
+}

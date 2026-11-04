@@ -1,0 +1,65 @@
+[
+  {
+    "id": "R-001",
+    "title": "Solder bridges on the MCU",
+    "expected": {
+      "severity": "P2",
+      "team": "SMT Process"
+    },
+    "text": "Line 2, lot L-2231: AOI flagged solder bridges on U7 (the STM32 MCU) on 14 boards this morning. Operator reworked two by hand. Please advise."
+  },
+  {
+    "id": "R-002",
+    "title": "Cold joints on a motor-drive part",
+    "expected": {
+      "severity": "P1",
+      "team": "Power Electronics"
+    },
+    "text": "Line 1, lot L-2240. Dull, cold-looking joints on the Q3 gate driver, spotted on 6 boards at final test. These are motor-drive boards."
+  },
+  {
+    "id": "R-003",
+    "title": "Cosmetic scratch on housings",
+    "expected": {
+      "severity": "P3",
+      "team": "Assembly"
+    },
+    "text": "Line 3, lot L-2244: 3 enclosures (H1) have a cosmetic scratch near the label. Functionally fine."
+  },
+  {
+    "id": "R-004",
+    "title": "Missing capacitor, many boards",
+    "expected": {
+      "severity": "P1",
+      "team": "SMT Process"
+    },
+    "text": "Line 2, lot L-2236: pick-and-place skipped C12 on 53 boards. The pads are bare."
+  },
+  {
+    "id": "R-005",
+    "title": "Tombstones again",
+    "expected": {
+      "severity": "P2",
+      "team": "SMT Process"
+    },
+    "text": "Line 1, lot L-2238: tombstoned C12 again, 6 boards with the part standing on one end. Third time this month I think."
+  },
+  {
+    "id": "R-006",
+    "title": "Vague report (no lot, no part)",
+    "expected": {
+      "severity": "NEEDS_INFO",
+      "team": "Triage Desk"
+    },
+    "text": "Something looks off on a few boards from line 3 today. Maybe soldering? Not sure which lot."
+  },
+  {
+    "id": "R-007",
+    "title": "Part not in the database",
+    "expected": {
+      "severity": "P2",
+      "team": "Triage Desk"
+    },
+    "text": "Line 3, lot L-2250: D9 installed backwards (wrong polarity) on 2 boards. Caught at ICT."
+  }
+]

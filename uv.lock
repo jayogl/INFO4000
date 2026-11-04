@@ -12,15 +12,15 @@ resolution-markers = [
 
 [manifest]
 members = [
-    "1stmp",
+    "2ndmp",
     "9thexercise",
     "info4000",
 ]
 
 [[package]]
-name = "1stmp"
+name = "2ndmp"
 version = "0.1.0"
-source = { editable = "1stMP" }
+source = { editable = "2ndMP" }
 
 [[package]]
 name = "9thexercise"

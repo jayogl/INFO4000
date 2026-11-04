@@ -51,6 +51,7 @@ members = [
     "7thexercise",
     "1stMP",
     "9thexercise",
+    "2ndMP",
 ]
 
 [dependency-groups]
