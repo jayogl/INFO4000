@@ -1,0 +1,15 @@
+[project]
+name = "hoist"
+version = "0.1.0"
+description = "Class exercise 2: two tools (one reads a CSV), an MCP server and a client"
+requires-python = ">=3.12"
+dependencies = ["mcp[cli]>=1.2"]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.uv]
+package = false
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
