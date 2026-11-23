@@ -21,16 +21,18 @@ def test_fuel_cost_rejects_bad_input():
 
 # ---- trip_time: YOUR turn. Replace each pytest.fail with real asserts.
 def test_trip_time_by_hand():
-    # Hand calculate first. 450 km at 90 km/h with a 30 minute break.
-    # Then a second case: 200 km at 80 km/h with a 15 minute break.
-    pytest.fail("TODO: write this test")
+    # Hand calculate first: 450 km at 90 km/h with 30 min break -> drive 5.0h, total 5.5h
+    assert trip_time(450, 90, 30) == {"drive_h": 5.0, "total_h": 5.5}
+    # Second case: 200 km at 80 km/h with 15 min break -> drive 2.5h, total 2.75h
+    assert trip_time(200, 80, 15) == {"drive_h": 2.5, "total_h": 2.75}
 
 
 def test_no_break_by_default():
-    # What should total_h be for 450 km at 90 km/h with no break given?
-    pytest.fail("TODO: write this test")
+    # 450 km at 90 km/h with no break given -> drive 5.0h, total 5.0h
+    assert trip_time(450, 90) == {"drive_h": 5.0, "total_h": 5.0}
 
 
 def test_trip_time_rejects_bad_input():
-    # Which inputs make no sense? Check that "error" is in the result.
-    pytest.fail("TODO: write this test")
+    assert "error" in trip_time(450, 0, 30)  # speed_kmh of 0
+    assert "error" in trip_time(-100, 90, 30)  # negative distance
+    assert "error" in trip_time(450, 90, -15)  # negative break
