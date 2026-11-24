@@ -37,7 +37,7 @@ async def main():
               "rated_temp_c": 130.0,
           },
       )
-      health_data = json.loads(health_res.content.text)
+      health_data = json.loads(health_res.content[0].text)
       print(f"   Result: {json.dumps(health_data, indent=2)}")
 
       # 3. Call motor_life_estimate
@@ -50,7 +50,7 @@ async def main():
               "rated_life_h": 20000.0,
           },
       )
-      life_data = json.loads(life_res.content.text)
+      life_data = json.loads(life_res.content[0].text)
       print(f"   Result: {json.dumps(life_data, indent=2)}")
 
 if __name__ == "__main__":

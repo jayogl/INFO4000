@@ -23,7 +23,8 @@ INSPECTOR_ROLE = {
         " to check operational health, vibration zone, load percentage, and"
         " thermal margin using `motor_health_check`. Always invoke"
         " `motor_health_check` with the provided telemetry. State the health"
-        " status (OK, WATCH, or ACT), vibration zone, and reasons clearly."
+        " status, vibration zone, and reasons clearly. Additionally at the end"
+        " of your response, always output a single line: 'STATUS: <OK|WATCH|ACT>'"
     ),
 }
 
@@ -109,7 +110,7 @@ async def run_agent(session, role_config, task_prompt, available_tools):
 
       print(f"    Tool Call -> {fn_name}({fn_args})")
       out = await session.call_tool(fn_name, fn_args)
-      res_text = out.content.text
+      res_text = out.content[0].text
       print(f"    Tool Result -> {res_text}")
       messages.append(
           {"role": "tool", "tool_name": fn_name, "content": res_text}
@@ -119,7 +120,7 @@ async def run_agent(session, role_config, task_prompt, available_tools):
 
 
 async def main():
-  question = sys.argv[14] if len(sys.argv) > 1 else DEFAULT_QUESTION
+  question = sys.argv[1] if len(sys.argv) > 1 else DEFAULT_QUESTION
 
   print("==================================================")
   print("      MULTI-AGENT TANDEM MAINTENANCE WORKFLOW     ")
@@ -144,18 +145,8 @@ async def main():
       # Stage 2: Plain Python Orchestrator Gate
       # -------------------------------------------------------------
       print("--- [Orchestrator Gate] Analyzing Inspector Findings ---")
-      is_healthy = (
-          "OK" in inspector_output.upper()
-          and "WATCH" not in inspector_output.upper()
-          and "ACT" not in inspector_output.upper()
-      )
-
-      if is_healthy:
-        print(
-            "Gate Decision: Motor status is OK. Skipping Estimator Agent"
-            " call."
-        )
-        print("\nFinal Tandem Summary:")
+      if "STATUS: OK" in inspector_output:
+        print("Gate Decision: Motor status is OK. Skipping Estimator Agent.")
         print(
             "Motor is operating within normal parameters. No life degradation"
             " analysis required."

@@ -6,7 +6,7 @@ readme = "README.md"
 authors = [
     { name = "Jalen Oglivie", email = "jmo30232@uga.edu" }
 ]
-requires-python = ">=3.12"
+requires-python = '==3.12.14'
 dependencies = [
     "accelerate>=1.15.0",
     "datasets>=5.0.1",
@@ -62,3 +62,6 @@ members = [
 dev = [
     "ipykernel>=7.3.0",
 ]
+
+[tool.pytest.ini_options]
+pythonpath = ["src/info4000"]
