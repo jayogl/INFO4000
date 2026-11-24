@@ -1,5 +1,5 @@
 # MP3: Motor Maintenance Agent — Results & Reflection
-
+![alt text](image.png)
 ## 1. Agent Execution Trace & Tool Sequence
 The model (`qwen3:4b` via local Ollama) evaluated the scenario query:
 > *"What is the health status and remaining insulation life of a motor operating at 150°C (rated 130°C), drawing 28 A (rated 25 A), with 3.1 mm/s RMS vibration?"*
